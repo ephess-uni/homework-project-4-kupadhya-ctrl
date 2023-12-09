@@ -36,7 +36,7 @@ def fees_report(infile, outfile):
             late_fees = calculate_late_fees(record)
             late_fees_by_patron[patron_id] += late_fees
 
-    late_fees_data = [{'patron_id': patron_id, 'late_fees': round(late_fees, 2)} for patron_id, late_fees in late_fees_by_patron.items()]
+    late_fees_data = [{'patron_id': patron_id, 'late_fees': '{:.2f}'.format(late_fees)} for patron_id, late_fees in late_fees_by_patron.items()]
 
     with open(outfile, "w", newline="") as file:
         fieldnames = ['patron_id', 'late_fees']
